@@ -1,27 +1,3 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>নীল আকাশের কাব্য | সাব্বির</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', 'SolaimanLipi', 'SutonnyMJ', 'Bangla', 'Noto Sans Bengali', Arial, sans-serif;
-            background: linear-gradient(145deg, #fef9e8 0%, #fff5e6 100%);
-            color: #2d2a24;
-            line-height: 1.75;
-            padding: 2rem 1rem;
-        }
-
-        /* মূল কন্টেইনার */
-        .book-container {
-            max-width: 760px;
             margin: 0 auto;
             background: rgba(255, 253, 245, 0.95);
             border-radius: 2rem;
