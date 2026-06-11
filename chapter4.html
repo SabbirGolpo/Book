@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>নতুন গল্প আসতাছে | অপেক্ষা করুন</title>
+  <!-- Google Fonts: আধুনিক ও বাংলা-সুহৃদ ফন্ট -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at 20% 30%, #0a0f2a, #030617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Hind Siliguri', 'Inter', system-ui, -apple-system, sans-serif;
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ডায়নামিক ব্যাকগ্রাউন্ড ইফেক্ট — ম্যাজিক্যাল ডাইনি স্পিরিট */
+    .magic-dust {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .dust-particle {
+      position: absolute;
+      background: rgba(255, 220, 150, 0.5);
+      border-radius: 50%;
+      filter: blur(2px);
+      animation: floatDust linear infinite;
+      box-shadow: 0 0 12px rgba(255, 200, 100, 0.7);
+    }
+
+    @keyframes floatDust {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateY(-20vh) translateX(40px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* মূল কার্ড — উজ্জ্বল, কাচের মতো ইফেক্ট */
+    .testimony-card {
+      position: relative;
+      z-index: 10;
+      max-width: 780px;
+      width: 100%;
+      background: rgba(15, 25, 45, 0.55);
+      backdrop-filter: blur(16px);
+      border-radius: 3rem;
+      padding: 2.2rem 2rem;
+      border: 1px solid rgba(255, 210, 150, 0.5);
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 200, 100, 0.2), 0 0 32px rgba(255, 140, 80, 0.3);
+      transition: all 0.3s ease;
+      animation: cardGlowPulse 3s infinite alternate;
+    }
+
+    @keyframes cardGlowPulse {
+      0% {
+        box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 200, 100, 0.3), 0 0 20px rgba(255, 100, 80, 0.2);
+        border-color: rgba(255, 210, 150, 0.4);
+      }
+      100% {
+        box-shadow: 0 35px 60px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 220, 130, 0.7), 0 0 48px rgba(255, 120, 70, 0.6);
+        border-color: rgba(255, 220, 170, 0.9);
+      }
+    }
+
+    /* প্রধান টেক্সট এলাকা */
+    .story-headline {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .main-text {
+      font-size: clamp(2.4rem, 12vw, 4.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #FFF5E0, #FFD6A5, #FFB47B, #FF9F6E);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientFlow 5s ease infinite, textPulse 2s ease-in-out infinite;
+      text-shadow: 0 2px 10px rgba(255, 160, 80, 0.3);
+      margin-bottom: 0.5rem;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes textPulse {
+      0% { opacity: 0.92; text-shadow: 0 0 5px #ffb347; }
+      100% { opacity: 1; text-shadow: 0 0 18px #ff8c42, 0 0 8px #ffbe76; }
+    }
+
+    .sub-line {
+      font-size: 1.3rem;
+      color: #EAD8B5;
+      font-weight: 500;
+      background: rgba(0, 0, 0, 0.35);
+      display: inline-block;
+      padding: 0.3rem 1.8rem;
+      border-radius: 80px;
+      backdrop-filter: blur(4px);
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(255, 185, 110, 0.5);
+      box-shadow: 0 0 12px rgba(255, 145, 77, 0.3);
+    }
+
+    /* ডাইনামিক কাউন্টার / টাইমার (উজ্জ্বল ও উইচি ডায়নামিক) */
+    .witch-timer {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 4rem;
+      padding: 0.8rem 1.6rem;
+      margin: 2rem 0 1.5rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      backdrop-filter: blur(8px);
+      border: 1px solid #FFCF8A;
+    }
+
+    .time-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Inter', monospace;
+    }
+
+    .time-number {
+      font-size: 2.6rem;
+      font-weight: 800;
+      background: linear-gradient(145deg, #FFE5B4, #FFBC7A);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px #ffa559;
+      letter-spacing: 2px;
+    }
+
+    .time-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #ffdbb5;
+      letter-spacing: 1px;
+    }
+
+    /* ডাইনি চরিত্রের ডায়নামিক ম্যাসেজ + এনিমেশন */
+    .witch-message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0 1.6rem;
+      background: linear-gradient(95deg, rgba(70, 30, 70, 0.6), rgba(20, 15, 45, 0.7));
+      border-radius: 3rem;
+      padding: 0.8rem 1.8rem;
+      flex-wrap: wrap;
+      border-left: 5px solid #ffad70;
+      animation: subtleShift 2s infinite alternate;
+    }
+
+    @keyframes subtleShift {
+      0% { transform: translateX(0px); background: rgba(60, 30, 65, 0.6);}
+      100% { transform: translateX(6px); background: rgba(85, 45, 85, 0.7); border-left-color: #ffcf9a; }
+    }
+
+    .witch-icon {
+      font-size: 2.7rem;
+      filter: drop-shadow(0 0 6px #ffb86b);
+      animation: bounceWitch 2s infinite ease;
+    }
+
+    @keyframes bounceWitch {
+      0%, 100% { transform: translateY(0px) rotate(0deg);}
+      50% { transform: translateY(-8px) rotate(3deg);}
+    }
+
+    .dynamic-text {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #FFE3B5;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    .dynamic-text span {
+      font-weight: 800;
+      color: #FFC489;
+      text-shadow: 0 0 5px #ff8c42;
+      display: inline-block;
+      animation: flicker 2s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; text-shadow: 0 0 2px #ffaa55; }
+      50% { opacity: 0.85; text-shadow: 0 0 12px #ff7744; }
+    }
+
+    /* প্রগ্রেস বার / ম্যাজিকাল অ্যানিমেশন (ডায়নামিক রিভিল) */
+    .magic-progress {
+      margin: 1rem 0 1.2rem;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #ffd9ae;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .progress-bar-bg {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 60px;
+      height: 12px;
+      overflow: hidden;
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.4);
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #FFB347, #FF6A3D, #FFA559);
+      border-radius: 60px;
+      transition: width 0.2s linear;
+      box-shadow: 0 0 12px #ff8c5a;
+      animation: fillPulse 1.2s infinite alternate;
+    }
+
+    @keyframes fillPulse {
+      0% { filter: brightness(1);}
+      100% { filter: brightness(1.2); box-shadow: 0 0 18px #ffa055;}
+    }
+
+    /* বাটন + কন্ট্রোল */
+    .magic-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .witch-btn {
+      background: rgba(20, 12, 28, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid #FFBC7A;
+      padding: 0.7rem 1.6rem;
+      border-radius: 3rem;
+      font-weight: 600;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #FFE2B5;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+    }
+
+    .witch-btn i {
+      font-size: 1.1rem;
+      color: #FFC285;
+    }
+
+    .witch-btn:hover {
+      background: rgba(100, 55, 100, 0.8);
+      border-color: #FFDA94;
+      color: white;
+      transform: scale(0.97);
+      box-shadow: 0 0 16px #ff9f65;
+      letter-spacing: 0.3px;
+    }
+
+    /* ফুটার নোট — জাদুকরি টেস্টামেন্ট */
+    .testament-footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #bc9f77;
+      border-top: 1px dashed rgba(255, 180, 100, 0.4);
+      padding-top: 1.2rem;
+    }
+
+    /* রেসপন্সিভ ফাইন-টিউনিং */
+    @media (max-width: 550px) {
+      .testimony-card {
+        padding: 1.5rem;
+      }
+      .time-number {
+        font-size: 1.9rem;
+      }
+      .witch-message {
+        padding: 0.6rem 1rem;
+      }
+      .dynamic-text {
+        font-size: 1rem;
+      }
+    }
+
+    /* স্ক্রল রিমুভ না করেই স্মুদ */
+    ::selection {
+      background: #FFA559;
+      color: #0a0718;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ব্যাকগ্রাউন্ডের ডায়নামিক ডাইনি ডাস্ট (জাদুকরি কণা) -->
+<div class="magic-dust" id="magicDustContainer"></div>
+
+<main class="testimony-card">
+  <div class="story-headline">
+    <div class="main-text">
+      <i class="fas fa-book-open" style="font-size: 0.8em; margin-right: 8px; background: none; color: #FFC48A;"></i> 
+      নতুন গল্প আসতাছে
+    </div>
+    <div class="sub-line">
+      <i class="fas fa-hourglass-half"></i> অপেক্ষা করুন • জাদু ঘনিয়ে আসছে <i class="fas fa-feather-alt"></i>
+    </div>
+  </div>
+
+  <!-- ডায়নামিক কাউন্টার (কাউন্টডাউন উদাহরণ) যেন কোন নতুন যাত্রার অপেক্ষা -->
+  <div class="witch-timer" id="countdownArea">
+    <div class="time-unit"><span class="time-number" id="days">00</span><span class="time-label">দিন</span></div>
+    <div class="time-unit"><span class="time-number" id="hours">00</span><span class="time-label">ঘণ্টা</span></div>
+    <div class="time-unit"><span class="time-number" id="minutes">00</span><span class="time-label">মিনিট</span></div>
+    <div class="time-unit"><span class="time-number" id="seconds">00</span><span class="time-label">সেকেন্ড</span></div>
+  </div>
+
+  <!-- ডাইনির ডায়নামিক মেসেজ এলিমেন্ট: উজ্জ্বল, পরিবর্তনশীল -->
+  <div class="witch-message">
+    <div class="witch-icon"><i class="fas fa-hat-wizard"></i> <i class="fas fa-moon"></i></div>
+    <div class="dynamic-text" id="witchOracle">
+      ✦ <span>ডাইনি</span> বলছে: গল্প আসছে ঠিকই, প্রস্তুত থেকো ✦
+    </div>
+    <div class="witch-icon"><i class="fas fa-cauldron"></i></div>
+  </div>
+
+  <!-- ম্যাজিক প্রগ্রেস বার: এটা টেস্টামেন্টের স্পিরিটকে ডায়নামিক দেখায় -->
+  <div class="magic-progress">
+    <div class="progress-label">
+      <span><i class="fas fa-sparkles"></i> গল্পের আগমনী জাদু</span>
+      <span id="progressPercent">0%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-fill" id="magicFill"></div>
+    </div>
+  </div>
+
+  <!-- কন্ট্রোল বাটন : ইন্টারঅ্যাকটিভ ডাইনামিক পরিবর্তন -->
+  <div class="magic-controls">
+    <button class="witch-btn" id="accelerateBtn"><i class="fas fa-bolt"></i> জাদু ত্বরান্বিত</button>
+    <button class="witch-btn" id="resetMagicBtn"><i class="fas fa-sync-alt"></i> পুনর্জন্ম</button>
+    <button class="witch-btn" id="randomOracleBtn"><i class="fas fa-comment-dots"></i> ডাইনির বাণী</button>
+  </div>
+
+  <div class="testament-footer">
+    <i class="fas fa-scroll"></i> ডাইনির টেস্টামেন্ট — আলোয় মোড়া অধ্যায়ের অপেক্ষায় রাত্রিজাগরণ 
+  </div>
+</main>
+
+<script>
+  (function() {
+    // --------------------------------------------------------------
+    // ১. ব্যাকগ্রাউন্ডের জন্য ম্যাজিক ডাস্ট (ডায়নামিক ইফেক্ট)
+    // --------------------------------------------------------------
+    const dustContainer = document.getElementById('magicDustContainer');
+    function createDust() {
+      const particleCount = 35;
+      for (let i = 0; i < particleCount; i++) {
+        let particle = document.createElement('div');
+        particle.classList.add('dust-particle');
+        const size = Math.random() * 8 + 3;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = Math.random() * 12 + 7 + 's';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.opacity = Math.random() * 0.5 + 0.2;
+        dustContainer.appendChild(particle);
+      }
+    }
+    createDust();
+
+    // --------------------------------------------------------------
+    // ২. গল্প প্রকাশের কাউন্টার: পরবর্তী গল্প আসার সময়সীমা (ডায়নামিক অপেক্ষা)
+    //    টেস্টামেন্টের নোট: এটা কোন পূর্ণিমা অথবা কাল্পনিক রিলিজ ডেট
+    //    যেমন ৩ দিন ৫ ঘণ্টা পর নতুন গল্প... কিন্তু কাউন্টার পরিবর্তনশীল রাখতে 
+    //    আমরা একটি লক্ষ্য তারিখ বানাবো যা আজ থেকে +৩ দিন এবং র‍্যান্ডম কিছু ঘণ্টা।
+    //    কিন্তু বাটনে ক্লিক করলে গতি বৃদ্ধি পাবে, আবার রিসেটেও যাদু ফিরবে।
+    //    মুল উদ্দেশ্য: উজ্জ্বল ডাইনামিক অপেক্ষার অনুভূতি।
+    // --------------------------------------------------------------
+
+    let targetDate = new Date();
+    // প্রাথমিক টার্গেট: আজ থেকে ৩ দিন ৮ ঘণ্টা পরে (যাতে ইউজার টাইমার দেখে)
+    targetDate.setDate(targetDate.getDate() + 3);
+    targetDate.setHours(targetDate.getHours() + 8);
+    targetDate.setMinutes(targetDate.getMinutes() + 37); // সুন্দর র‍্যান্ডম ভ্যালু
+    targetDate.setSeconds(targetDate.getSeconds() + 15);
+
+    let timerInterval = null;
+    let progressInterval = null;
+    let fakeProgressValue = 0;       // 0 থেকে 100 পর্যন্ত সিমুলেটেড প্রগ্রেস, যা গল্পের আসন্নতা বুঝায়
+    let progressSpeed = 0.15;        // প্রতি ১০০ মিলিসেকেন্ডে কত বৃদ্ধি পাবে (প্রারম্ভিক গতি)
+
+    // এলিমেন্ট রেফারেন্স
+    const daysSpan = document.getElementById('days');
+    const hoursSpan = document.getElementById('hours');
+    const minutesSpan = document.getElementById('minutes');
+    const secondsSpan = document.getElementById('seconds');
+    const magicFill = document.getElementById('magicFill');
+    const percentSpan = document.getElementById('progressPercent');
+    const witchOracleSpan = document.getElementById('witchOracle');
+
+    // ডাইনির এলোমেলো বাণীর তালিকা — আরো উজ্জ্বল ও রহস্যময় টেস্টামেন্ট
+    const oracleMessages = [
+      "✦ <span>ডাইনি</span> ফিসফিস করছে: নতুন গল্পের অধ্যায়ে মিলবে অমৃত✦",
+      "★ <span>জাদুর আঁচল</span> দুলছে, অপেক্ষার প্রহর শেষের পথে ★",
+      "🌙 <span>ডাইনির চোখে</span> স্পষ্ট, আসছে এক চমকপ্রদ কাহিনী 🌙",
+      "✨ <span>টেস্টামেন্টের আলো</span> জ্বলছে — গল্প ছড়াবে মন্ত্রমুগ্ধ✨",
+      "🍂 <span>পাতার ভাঁজে</span> লুকিয়ে অপেক্ষার গান, শিগগিরই শোনাবে 🍂",
+      "🔥 <span>আগুনরঙের বর্ণনা</span> লেখা হচ্ছে, চোখ রাখো জাদুর পথে 🔥",
+      "🕯️ <span>প্রতীক্ষার প্রদীপ</span> জ্বেলে রেখেছে ডাইনি — গল্প এলেই মিটবে মায়া 🕯️",
+      "📖 <span>নতুন গল্পের সূচনা</span> মোহনীয় ইশারায়, মাত্র কিছু প্রহর বাকি 📖"
+    ];
+
+    // update timer display based on targetDate
+    function updateTimerDisplay() {
+      const now = new Date();
+      const diff = targetDate - now;
+      if (diff <= 0) {
+        // কাউন্টার শেষ হলে জাদুকরি বার্তা
+        if (daysSpan) daysSpan.innerText = '০০';
+        if (hoursSpan) hoursSpan.innerText = '০০';
+        if (minutesSpan) minutesSpan.innerText = '০০';
+        if (secondsSpan) secondsSpan.innerText = '০০';
+        if (timerInterval) clearInterval(timerInterval);
+        witchOracleSpan.innerHTML = "✨ <span>অভিনন্দন!</span> নতুন গল্প এসে গেছে! জাদু শুরু ✨";
+        return;
+      }
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      daysSpan.innerText = days < 10 ? '0' + days : '' + days;
+      hoursSpan.innerText = hours < 10 ? '0' + hours : '' + hours;
+      minutesSpan.innerText = minutes < 10 ? '0' + minutes : '' + minutes;
+      secondsSpan.innerText = seconds < 10 ? '0' + seconds : '' + seconds;
+    }
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        updateTimerDisplay();
+        // যদি ডিফারেন্স <= 0 হয় তাহলে ক্লিয়ার করবে উপরের কন্ডিশনেই, তার পরেও স্টপ
+        if ((targetDate - new Date()) <= 0) {
+          clearInterval(timerInterval);
+        }
+      }, 1000);
+    }
+
+    // প্রগ্রেস ফাংশন (জাদুর অগ্রগতি)
+    function updateProgress() {
+      fakeProgressValue += progressSpeed;
+      if (fakeProgressValue >= 100) {
+        fakeProgressValue = 100;
+        if (progressInterval) clearInterval(progressInterval);
+        magicFill.style.width = '100%';
+        percentSpan.innerText = '100%';
+        witchOracleSpan.innerHTML = "✦ <span>গল্পের দ্বার খুলেছে!</span> আগুন জ্বলছে, অপেক্ষার পালা শেষ ✦";
+        return;
+      }
+      magicFill.style.width = fakeProgressValue + '%';
+      percentSpan.innerText = Math.floor(fakeProgressValue) + '%';
+      // প্রগ্রেস অনুযায়ী বাণী পরিবর্তন (ঐচ্ছিক) — ডাইনামিক চরিত্র
+      if (fakeProgressValue > 70 && fakeProgressValue < 85) {
+        if (!witchOracleSpan.innerHTML.includes("প্রায় শেষ")) {
+          witchOracleSpan.innerHTML = "🌕 <span>ডাইনি</span> বলছে: গল্প প্রায় শেষ সীমানায়, জাদুঘন! 🌕";
+        }
+      } else if (fakeProgressValue > 40 && fakeProgressValue < 60) {
+        if (!witchOracleSpan.innerHTML.includes("মাঝপথ")) {
+          witchOracleSpan.innerHTML = "⚡ <span>মায়াবী আভাস</span> — অর্ধেক পথ পেরিয়েছে গল্প, সতেজ হও ⚡";
+        }
+      } else if (fakeProgressValue < 30) {
+        // স্টার্টের বাণী যদি না থাকে তাহলে
+        if (!witchOracleSpan.innerHTML.includes("প্রস্তুত")) {
+          witchOracleSpan.innerHTML = "✦ <span>ডাইনি</span> বলছে: গল্প আসছে ঠিকই, প্রস্তুত থেকো ✦";
+        }
+      }
+    }
+
+    function startProgress() {
+      if (progressInterval) clearInterval(progressInterval);
+      progressInterval = setInterval(() => {
+        updateProgress();
+        if (fakeProgressValue >= 100) {
+          clearInterval(progressInterval);
+        }
+      }, 100);
+    }
+
+    // রিসেট ফাংশন (পুনর্জন্ম)
+    function resetMagic() {
+      // প্রগ্রেস রিসেট
+      if (progressInterval) clearInterval(progressInterval);
+      fakeProgressValue = 0;
+      progressSpeed = 0.15;
+      magicFill.style.width = '0%';
+      percentSpan.innerText = '0%';
+      // টাইমার রিসেট (নতুন অপেক্ষা)
+      const newTarget = new Date();
+      newTarget.setDate(newTarget.getDate() + 2);
+      newTarget.setHours(newTarget.getHours() + 5);
+      newTarget.setMinutes(newTarget.getMinutes() + 22);
+      newTarget.setSeconds(newTarget.getSeconds() + 10);
+      targetDate = newTarget;
+      startTimer();
+      // ডাইনির এলোমেলো বাণী দিন পুনর্জন্মের সময়
+      const randomMsg = oracleMessages[Math.floor(Math.random() * oracleMessages.length)];
+      witchOracleSpan.innerHTML = randomMsg;
+      startProgress();
+    }
+
+    // জাদু ত্বরান্বিত (এক্সিলারেট)
+    function accelerateMagic() {
+      progressSpeed = Math.min(progressSpeed + 0.25, 2.2);
+      // ভিজুয়াল ইফেক্ট হিসেবে বাণী পরিবর্তন ও সতর্কতা
+      witchOracleSpan.innerHTML = "🌀 <span>ডাইনি</span> গতিবেগ বাড়াল! অচিরেই মিলবে গল্পের স্বাদ 🌀";
+      setTimeout(() => {
+        if (fakeProgressValue < 95) {
+          // বাণী আগের অবস্থায় ফিরিয়ে দিতে পারে তবে র‍্যান্ডমাইজ
+          const freshMsg = oracleMessages[Math.floor(Math.random() * oracleMessages.length)];
+          witchOracleSpan.innerHTML = freshMsg;
+        }
+      }, 1800);
+      // প্রগ্রেস স্পিড বাড়ানোর পাশাপাশি সামান্য বুস্ট
+    }
+
+    // এলোমেলো ডাইনি বাণী
+    function randomOracle() {
+      const randomIndex = Math.floor(Math.random() * oracleMessages.length);
+      witchOracleSpan.innerHTML = oracleMessages[randomIndex];
+    }
+
+    // প্রগ্রেস ইতোমধ্যে চলছে, টাইমার চলছে
+    startTimer();
+    startProgress();
+
+    // বাটন ইভেন্ট লিসেনার
+    const accelerateBtn = document.getElementById('accelerateBtn');
+    const resetBtn = document.getElementById('resetMagicBtn');
+    const oracleBtn = document.getElementById('randomOracleBtn');
+
+    if (accelerateBtn) {
+      accelerateBtn.addEventListener('click', accelerateMagic);
+    }
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        resetMagic();
+      });
+    }
+    if (oracleBtn) {
+      oracleBtn.addEventListener('click', randomOracle);
+    }
+
+    // ছোট্ট ডায়নামিক টাচ/ক্লিকে অতিরিক্ত ঝিলিক: মাউস মুভে কার্ড ফ্লিক? ঐচ্ছিক বর্ধিত।
+    // এছাড়া কোনো স্টোরেজ ছাড়াই সম্পূর্ণ ডায়নামিক।
+
+    // প্রতি 4 সেকেন্ডে যদি প্রগ্রেস স্বাভাবিক থাকে এবং 100 না হয় তাহলে একটি বাণী আসতে পারে (আলাদা ফিচার)
+    setInterval(() => {
+      if (fakeProgressValue < 100 && document.hasFocus()) {
+        // মাঝে মাঝে জাদুর ইশারা, অতি ডায়নামিক
+        const chance = Math.random();
+        if (chance > 0.65) {
+          const tipIndex = Math.floor(Math.random() * oracleMessages.length);
+          witchOracleSpan.innerHTML = oracleMessages[tipIndex];
+        }
+      }
+    }, 7000);
+  })();
+</script>
+</body>
+</html>
